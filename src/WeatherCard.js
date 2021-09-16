@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './WeatherCard.css'
-import { apiKey } from './secret-file';
 
 export default function WeatherCard(props) {
 
@@ -12,6 +11,8 @@ export default function WeatherCard(props) {
     const [dataRefresh, setDataRefresh] = useState(0);
     const [longitude, setLongitude] = useState();
     const [latitude, setLatitude] = useState();
+
+    console.log(process.env.REACT_APP_OWP_API_KEY);
 
     useEffect(() => {
         // console.log("Do API call for data");
@@ -50,7 +51,7 @@ export default function WeatherCard(props) {
 
     function getWeatherClick() {
         console.log("get weather");
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${process.env.REACT_APP_OWP_API_KEY}&units=metric`)
             .then(response => response.json())
             .then(data => {
                 setTemperature(data.main.temp);

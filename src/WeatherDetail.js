@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './WeatherDetail.css'
-import { apiKey } from './secret-file';
 import AccordionItem from './AccordionItem';
 
 export default class WeatherDetail extends Component {
@@ -28,7 +27,7 @@ export default class WeatherDetail extends Component {
 
     getAllWeatherData() {
         // console.log(this.props);
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.props.latitude}&lon=${this.props.longitude}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`)
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.props.latitude}&lon=${this.props.longitude}&exclude=current,minutely,hourly,alerts&appid=${process.env.REACT_APP_OWP_API_KEY}&units=metric`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
