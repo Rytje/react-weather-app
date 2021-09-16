@@ -12,8 +12,6 @@ export default function WeatherCard(props) {
     const [longitude, setLongitude] = useState();
     const [latitude, setLatitude] = useState();
 
-    console.log(process.env.REACT_APP_OWP_API_KEY);
-
     useEffect(() => {
         // console.log("Do API call for data");
         setTemperature(Math.floor((Math.random()*30)+1));
